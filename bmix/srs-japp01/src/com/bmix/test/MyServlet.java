@@ -32,18 +32,27 @@ public class MyServlet extends HttpServlet {
 		String fname=request.getParameter("fname");
 		String lname=request.getParameter("lname");
 		String name=fname+" "+lname;
+		
+		String imgSrc="user.png";
+		
+		if(fname.equalsIgnoreCase("Sunit"))
+			imgSrc="sunit.jpg";
+		
 		response.setContentType("text/html");
 
 	      PrintWriter out = response.getWriter();
-	      String title = "Welcome "+name;
-			
+	      String title = "Welcome "+name;	      
 	      String docType = "<!doctype html public \"-//w3c//dtd html 4.0 " +
 	         "transitional//en\">\n";
 				
 	      out.println(docType + "<html>\n" +
-	         "<head><title>" + title + "</title></head>\n" +
-	         "<body bgcolor=\"#f0f0f0\">\n" +
-	         "<h1 align=\"center\">" + title + " to Sunit's First Cloud App</h1>\n" +
+	         "<head><title> Welcome " + fname + "</title></head>\n" +
+	         "<body>\n" +
+	         "<h1 align=\"center\">" + title+"</h1><br>");
+	         		
+	      out.println("<ul align=\"center\"><img src='" + request.getContextPath() + "/images/"+imgSrc+"' alt='image' height=\"60\" width=\"60\" /></ul>");
+	
+	      out.println("<h2 align=\"center\"> to Sunit's First Cloud App</h2>\n" +
 	         "<ul align=\"center\">\n" +
 	         "Request Time = "+new Timestamp(System.currentTimeMillis())+
 	         
